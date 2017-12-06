@@ -6,6 +6,11 @@ Reverse Proxy example on Docker containers
 Only http is supported
 
 
+The Reverse Proxy server as well as a pair of Http servers are run in dedicated
+docker containers on a single computer.
+
+
+
 ```
 
       +---------------+
@@ -66,6 +71,12 @@ curl http://localhost:9098/serviceone/v2
 
 
 ## Troubleshooting
+
+Review the network setting of docker:
+
+```
+docker network inspect bridge
+```
 
 Check that services are assigned with IPs:
 
