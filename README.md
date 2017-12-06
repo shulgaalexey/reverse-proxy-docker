@@ -6,6 +6,37 @@ Reverse Proxy example on Docker containers
 Only http is supported
 
 
+```
+
+      +---------------+
+      | Reverse Proxy |
+      | 172.17.0.4    |
+      | port 9096     |
+      +---------------+
+        |
+        |
+        | redirected from http://localhost:9096/serviceone/v1/blahblah
+        |
+        |           +------------+
+        +---------->| Service v1 |
+        |           | 172.17.0.2 |
+        |           | port 9097  |
+        |           +------------+
+        |
+        |
+        |
+        | redirected from http://localhost:9096/serviceone/v2/foo/bar
+        |
+        |           +------------+
+        +---------->| Service v2 |
+                    | 172.17.0.3 |
+                    | port 9098  |
+                    +------------+
+
+
+```
+
+
 ## How to run
 
 ```
