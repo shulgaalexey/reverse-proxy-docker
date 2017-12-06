@@ -22,8 +22,13 @@ func extractNameVersion(target *url.URL) (name, version string, err error) {
         // 2 elements (service name and version)
         tmp := strings.Split(path, "/")
         if len(tmp) < 2 {
-		println("Not enough arguments at: "  + path)
-                return "", "", fmt.Errorf("Invalid path")
+		if path == "favicon.ico" {
+			println("Requested favicon.ico...Ignoring it")
+			return "", "", fmt.Errorf("Ignoring favicon.ico request")
+		} else {
+			println("Not enough arguments at: "  + path)
+	                return "", "", fmt.Errorf("Invalid path")
+		}
         }
         name, version = tmp[0], tmp[1]
         // Rewrite the request's path without the prefix.
